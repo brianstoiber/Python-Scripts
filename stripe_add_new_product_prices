@@ -1,9 +1,9 @@
 import stripe
 
-# 🔐 Set your Stripe secret key
-stripe.api_key = "sk_live_######"  # Replace with your real key
+# Set your Stripe API Secret Key here
+stripe.api_key = "Your_Secret_Key"
 
-# 🛒 Product and common config
+# Product and common config
 product_id = "prod_ABC123"
 amount_cents = 3800  # $38.00
 currency = "usd"
@@ -12,7 +12,7 @@ tax_code = "PM020760"
 tax_behavior = "exclusive"
 metadata = {"TaxCode": tax_code}
 
-# ✅ 1. One-time purchase (no recurring)
+# 1. One-time purchase (no recurring)
 one_time = stripe.Price.create(
     unit_amount=amount_cents,
     currency=currency,
@@ -22,7 +22,7 @@ one_time = stripe.Price.create(
     tax_behavior=tax_behavior
 )
 
-# ✅ 2. Monthly subscription
+# 2. Monthly subscription
 monthly = stripe.Price.create(
     unit_amount=amount_cents,
     currency=currency,
@@ -33,7 +33,7 @@ monthly = stripe.Price.create(
     recurring={"interval": "month"}
 )
 
-# ✅ 3. Every 2 months
+# 3. Every 2 months
 bimonthly = stripe.Price.create(
     unit_amount=amount_cents,
     currency=currency,
@@ -44,7 +44,7 @@ bimonthly = stripe.Price.create(
     recurring={"interval": "month", "interval_count": 2}
 )
 
-# ✅ 4. Every 3 months
+# 4. Every 3 months
 quarterly = stripe.Price.create(
     unit_amount=amount_cents,
     currency=currency,
@@ -55,14 +55,14 @@ quarterly = stripe.Price.create(
     recurring={"interval": "month", "interval_count": 3}
 )
 
-# ⭐ Set monthly subscription as default price
+# Set monthly subscription as default price
 stripe.Product.modify(
     product_id,
     default_price=monthly.id
 )
 
 
-# 🖨️ Print confirmation
+# Print confirmation
 print("Prices created:")
 print(f"✅ One-time:      {one_time.id}")
 print(f"✅ Monthly:       {monthly.id}")
