@@ -3,7 +3,7 @@ import stripe
 # Set your Stripe API Secret Key here
 stripe.api_key = "Your_Secret_Key"
 
-# Product and common config
+# Product and common configuration
 product_id = "prod_ABC123"
 amount_cents = 3800  # $38.00
 currency = "usd"
