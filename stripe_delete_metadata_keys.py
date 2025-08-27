@@ -1,7 +1,7 @@
 import stripe
 import os
 
-# Set your Stripe API Secret Key here
+# Set your Stripe API Secret Key 
 stripe.api_key = "Your_Secret_Key"
 
 # Define the specific account ID
